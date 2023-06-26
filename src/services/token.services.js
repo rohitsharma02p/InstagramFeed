@@ -1,5 +1,6 @@
 require("dotenv").config();
-const moment = require('moment');
+const { UserInputError } = require("apollo-server-express");
+const moment = require("moment");
 const { models } = require("../models/index");
 const { tokenTypes } = require("../config/tokens");
 const jwt = require("jsonwebtoken");
@@ -68,6 +69,18 @@ const generateAuthTokens = async (user) => {
   };
 };
 
+const logout = async (refreshToken) => {
+  const refreshTokenDoc = await models.Token.findOne({
+    token: refreshToken,
+    type: tokenTypes.REFRESH
+  });
+  if (!refreshTokenDoc) {
+    throw new UserInputError("User not found");
+  }
+  await refreshTokenDoc.deleteOne();
+};
+
 module.exports = {
-  generateAuthTokens
+  generateAuthTokens,
+  logout
 };

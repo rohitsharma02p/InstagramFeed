@@ -9,6 +9,7 @@ module.exports = gql`
   type Mutation {
     register( email: String! password: String!): User
     login(email: String! password: String!): AuthPayload
+    logout(refreshToken: String!): LogoutResponse
   }
 
   type AuthPayload {
@@ -24,6 +25,10 @@ module.exports = gql`
   type Token {
     token: String
     expires: String
+  }
+
+  type LogoutResponse {
+    success: Boolean
   }
   
 `;
