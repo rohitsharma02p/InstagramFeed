@@ -17,3 +17,5 @@ and other apis as follow
 
 User need to authenticate to perform task on server 
 and user can Delete and Update only his created posts.
+
+Also pagination is implemented for retrieving posts.
