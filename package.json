@@ -4,8 +4,8 @@
   "description": "This backend project is developed using graphQl and node.js",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "nodemon src/index.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "author": "Rohit Sharma",
   "license": "ISC",
